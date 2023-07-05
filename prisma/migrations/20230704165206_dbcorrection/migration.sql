@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Cliente` MODIFY `CNPJ` BIGINT NOT NULL;

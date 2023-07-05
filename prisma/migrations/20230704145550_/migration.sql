@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE `CLient` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `CNPJ` INTEGER NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+
+    UNIQUE INDEX `CLient_CNPJ_key`(`CNPJ`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
