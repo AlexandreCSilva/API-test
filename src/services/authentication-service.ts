@@ -46,7 +46,7 @@ async function validatePasswordOrFail(password: string, userPassword: string) {
 type SignInResult = {
     user: Pick<User, "id" | "email">;
     token: string;
-  };
+};
 
 const authService = {
     signIn,

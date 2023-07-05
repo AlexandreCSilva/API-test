@@ -5,7 +5,7 @@ export async function clientPost(req: Request, res: Response) {
     const { CNPJ, razaoSocial, fantasia, situacao } = req.body;
   
     try {
-      const client = await clientService.create({ CNPJ, razaoSocial, fantasia, situacao });
+      const client = await clientService.create({ CNPJ: BigInt(CNPJ), razaoSocial, fantasia, situacao });
       return res.status(201).json({
         id: client.id,
       });
