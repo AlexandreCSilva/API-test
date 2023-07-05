@@ -7,6 +7,13 @@ export async function operationPost(req: Request, res: Response) {
   
     try {
         const client = await clientService.readCNPJ(CNPJ);
+
+        if (!client) {
+            return res.status(404).send('Client not found!');
+        } else if (client.situacao == false) {
+            return res.status(404).send('Client is not active!');
+        }
+
         const operation = await operationService.create({
             nome: name,
             situacao: true,
@@ -17,6 +24,34 @@ export async function operationPost(req: Request, res: Response) {
             }
         });
         return res.status(200).send(operation);
+    } catch (error) {
+        return res.status(400).send(error.message);
+    }
+}
+
+export async function operationRead(req: Request, res: Response) {
+    const { operation, CNPJ } = req.query;
+  
+    try {
+        if (!CNPJ) {
+            const result = await operationService.readOperation(operation.toString());
+            
+            if (!result) {
+                return res.status(404).send('Operation not found!');
+            }
+
+            return res.status(200).send(result);
+        } else {
+            const client = await clientService.readCNPJ(CNPJ.toString());
+
+            if (!client) {
+                return res.status(404).send('Client not found!');
+            }
+
+            const result = await operationService.readCNPJ(CNPJ.toString());
+            
+            return res.status(200).send(result);
+        }
     } catch (error) {
         return res.status(400).send(error.message);
     }
