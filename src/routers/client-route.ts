@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { validateBody } from '../middlewares/validate-body.ts';
 import { clientValidateSchema } from '../schemas/client-schema.ts';
-import { clientDelete, clientGet, clientPost, clientUpdate } from '../controllers/client-controler.ts';
+import { clientDelete, clientGet, clientPost, clientUpdate } from '../controllers/client-controller.ts';
 import { validateCNPJ } from '../middlewares/validate-cnpj.ts';
 
 const clientRouter = Router();

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import clientService from "../services/client-service.ts";
+import clientService from "../services/client-service.js";
 
 export async function clientPost(req: Request, res: Response) {
     const { CNPJ, razaoSocial, fantasia, situacao } = req.body;
