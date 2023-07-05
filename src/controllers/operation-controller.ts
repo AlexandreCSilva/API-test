@@ -35,7 +35,7 @@ export async function operationRead(req: Request, res: Response) {
     try {
         if (!CNPJ) {
             const result = await operationService.readOperation(operation.toString());
-            
+
             if (!result) {
                 return res.status(404).send('Operation not found!');
             }
@@ -56,3 +56,14 @@ export async function operationRead(req: Request, res: Response) {
         return res.status(400).send(error.message);
     }
 }
+
+export async function operationUpdate(req: Request, res: Response) {
+    const { id, nome, clienteId, situacao } = req.body;
+    
+    try {
+      const operacao = await operationService.update({ id, nome, clienteId, situacao });
+      return res.status(200).send(operacao);
+    } catch (error) {
+      return res.status(400).send(error.message);
+    }
+  }

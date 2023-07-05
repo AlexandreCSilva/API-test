@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Operacao, Prisma } from "@prisma/client";
 import { prisma } from "../config/database.ts";
 
 async function create(data: Prisma.OperacaoCreateInput) {
@@ -25,10 +25,25 @@ async function readCNPJ(CNPJ: string) {
     });
 }
 
+async function update({ id, nome, situacao, clienteId }: Operacao) {
+    console.log(id)
+    return prisma.operacao.update({
+        where: {
+            id
+        }
+        , data: {
+            nome,
+            situacao,
+            clienteId,
+        }
+    });
+}
+
 const operationRepository = {
     create,
     readCNPJ,
     readOperation,
+    update,
 };
 
 export default operationRepository;

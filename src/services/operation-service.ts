@@ -17,11 +17,17 @@ async function readCNPJ(CNPJ : string): Promise<Operacao[]> {
     return operation;
 }
 
+async function update(data: Operacao): Promise<Operacao> {
+    const operation = await operationRepository.update(data);
+
+    return operation;
+}
 
 const operationService = {
     create,
     readCNPJ,
     readOperation,
+    update,
 };
 
 export default operationService;
