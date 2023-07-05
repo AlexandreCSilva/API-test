@@ -7,8 +7,17 @@ async function create(data: Prisma.UserCreateInput) {
     });
 }
 
+async function readEmail(email: string) {
+    return prisma.user.findFirst({
+        where: {
+            email
+        }
+    });
+}
+
 const userRepository = {
     create,
+    readEmail,
 };
 
 export default userRepository;
