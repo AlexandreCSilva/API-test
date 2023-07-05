@@ -1,6 +1,6 @@
 # API-test da Argus
 
-## How to run for development
+## How to run
 
 1. Clone this repository
 
