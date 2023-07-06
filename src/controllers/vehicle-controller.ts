@@ -84,3 +84,14 @@ export async function vehicleRead(req: Request, res: Response) {
         return res.status(400).send(error.message);
     }
 }
+
+export async function vehicleUpdate(req: Request, res: Response) {
+    const { placa, tipo, operacaoId, situacao } = req.body;
+    
+    try {
+      const result = await vehicleService.update({ id: undefined, placa, tipo, operacaoId, situacao });
+      return res.status(200).send(result);
+    } catch (error) {
+      return res.status(400).send(error.message);
+    }
+}

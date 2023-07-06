@@ -37,12 +37,26 @@ async function readAll() {
     return prisma.veiculo.findMany();
 }
 
+async function update({ placa, tipo, situacao, operacaoId }: Veiculo) {
+    return prisma.veiculo.update({
+        where: {
+            placa
+        }
+        , data: {
+            tipo,
+            situacao,
+            operacaoId,
+        }
+    });
+}
+
 const vehicleRepository = {
     create,
     readPlate,
     readOperation,
     readClientId,
     readAll,
+    update,
 };
 
 export default vehicleRepository;

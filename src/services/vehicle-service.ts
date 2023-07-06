@@ -21,12 +21,17 @@ async function readAll(): Promise<Veiculo[]> {
     return vehicleRepository.readAll();
 }
 
+async function update(data: Veiculo): Promise<Veiculo> {
+    return vehicleRepository.update(data);
+}
+
 const vehicleService = {
     create,
     readPlate,
     readOperation,
     readClientId,
     readAll,
+    update,
 };
 
 export default vehicleService;

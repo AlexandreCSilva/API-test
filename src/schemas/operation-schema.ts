@@ -6,7 +6,7 @@ export const operationCreateValidateSchema = Joi.object({
 });
 
 export const operationUpdateValidateSchema = Joi.object({
-    id: Joi.number().required(),   
+    id: Joi.number().required(),
     nome: Joi.string().required(),
     clienteId: Joi.number().required(),
     situacao: Joi.boolean().required(), 

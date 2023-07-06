@@ -34,7 +34,6 @@ async function readId(id: number) {
 }
 
 async function update({ id, nome, situacao, clienteId }: Operacao) {
-    console.log(id)
     return prisma.operacao.update({
         where: {
             id
