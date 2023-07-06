@@ -25,6 +25,14 @@ async function readCNPJ(CNPJ: string) {
     });
 }
 
+async function readId(id: number) {
+    return prisma.operacao.findFirst({
+        where: {
+            id
+        }
+    });
+}
+
 async function update({ id, nome, situacao, clienteId }: Operacao) {
     console.log(id)
     return prisma.operacao.update({
@@ -44,6 +52,7 @@ const operationRepository = {
     readCNPJ,
     readOperation,
     update,
+    readId,
 };
 
 export default operationRepository;

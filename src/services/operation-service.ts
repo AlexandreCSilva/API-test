@@ -17,6 +17,12 @@ async function readCNPJ(CNPJ : string): Promise<Operacao[]> {
     return operation;
 }
 
+async function readId(id : number): Promise<Operacao> {
+    const operation = await operationRepository.readId(id);
+
+    return operation;
+}
+
 async function update(data: Operacao): Promise<Operacao> {
     const operation = await operationRepository.update(data);
 
@@ -28,6 +34,7 @@ const operationService = {
     readCNPJ,
     readOperation,
     update,
+    readId,
 };
 
 export default operationService;

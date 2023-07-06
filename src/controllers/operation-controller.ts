@@ -23,6 +23,7 @@ export async function operationPost(req: Request, res: Response) {
                 }
             }
         });
+        
         return res.status(200).send(operation);
     } catch (error) {
         return res.status(400).send(error.message);
