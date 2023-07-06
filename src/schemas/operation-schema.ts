@@ -11,3 +11,7 @@ export const operationUpdateValidateSchema = Joi.object({
     clienteId: Joi.number().required(),
     situacao: Joi.boolean().required(), 
 });
+
+export const operationIdValidateSchema = Joi.object({
+    id: Joi.number().required(),   
+});

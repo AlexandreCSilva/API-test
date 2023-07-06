@@ -5,3 +5,7 @@ export const vehicleCreateValidateSchema = Joi.object({
     tipo: Joi.string().required(),
     operationId: Joi.number().required(),
 });
+
+export const vehicleValidateSchema = Joi.object({
+    placa: Joi.number().required(),
+});
