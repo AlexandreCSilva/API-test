@@ -33,6 +33,11 @@ async function readId(id: number) {
     });
 }
 
+async function readAll() {
+    return prisma.operacao.findMany();
+}
+
+
 async function update({ id, nome, situacao, clienteId }: Operacao) {
     return prisma.operacao.update({
         where: {
@@ -52,6 +57,7 @@ const operationRepository = {
     readOperation,
     update,
     readId,
+    readAll,
 };
 
 export default operationRepository;

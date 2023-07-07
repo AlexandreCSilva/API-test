@@ -23,6 +23,12 @@ async function readId(id : number): Promise<Operacao> {
     return operation;
 }
 
+async function readAll(): Promise<Operacao[]> {
+    const operation = await operationRepository.readAll();
+
+    return operation;
+}
+
 async function update(data: Operacao): Promise<Operacao> {
     const operation = await operationRepository.update(data);
 
@@ -35,6 +41,7 @@ const operationService = {
     readOperation,
     update,
     readId,
+    readAll,
 };
 
 export default operationService;

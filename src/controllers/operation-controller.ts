@@ -34,7 +34,7 @@ export async function operationRead(req: Request, res: Response) {
     const { operation, CNPJ } = req.query;
   
     try {
-        if (!CNPJ) {
+        if (operation) {
             const result = await operationService.readOperation(operation.toString());
 
             if (!result) {
@@ -42,7 +42,7 @@ export async function operationRead(req: Request, res: Response) {
             }
 
             return res.status(200).send(result);
-        } else {
+        } else if (CNPJ) {
             const client = await clientService.readCNPJ(CNPJ.toString());
 
             if (!client) {
@@ -50,6 +50,10 @@ export async function operationRead(req: Request, res: Response) {
             }
 
             const result = await operationService.readCNPJ(CNPJ.toString());
+            
+            return res.status(200).send(result);
+        } else {
+            const result = await operationService.readAll();
             
             return res.status(200).send(result);
         }

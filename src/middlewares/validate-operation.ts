@@ -7,7 +7,7 @@ export function validateOperation(req: Request, res: Response, next: NextFunctio
 
     if (!operation) {
         if (!CNPJ) {
-            res.status(404).send('No operation or CNPJ on query!');
+            next()
         } else {
             const { error } = CNPJValidateSchema.validate({ CNPJ: CNPJ.toString() });
 
